@@ -12,6 +12,7 @@ it(`Should App render correctly`, () => {
     .create(<App
       countOffers={COUNT_OFFERS}
       cityPlaces={CITY_PLACES}
+      onPlaceCardTitleClick={() => {}}
     />)
     .toJSON();
 

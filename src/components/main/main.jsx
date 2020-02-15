@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Main = (props) => {
-  const {countOffers, cityPlaces} = props;
+  const {countOffers, cityPlaces, onPlaceCardTitleClick} = props;
 
   return (
     <React.Fragment>
@@ -130,7 +130,7 @@ const Main = (props) => {
                             <span className="visually-hidden">Rating</span>
                           </div>
                         </div>
-                        <h2 className="place-card__name">
+                        <h2 className="place-card__name" onClick={onPlaceCardTitleClick}>
                           <a href="#">{placeName}</a>
                         </h2>
                         <p className="place-card__type">Apartment</p>
@@ -156,6 +156,7 @@ Main.propTypes = {
   cityPlaces: PropTypes.shape({
     placeNames: PropTypes.array.isRequired,
   }).isRequired,
+  onPlaceCardTitleClick: PropTypes.func.isRequired,
 };
 
 export default Main;

@@ -9,6 +9,7 @@ const App = (props) => {
     <Main
       countOffers={countOffers}
       cityPlaces={cityPlaces}
+      onPlaceCardTitleClick={() => {}}
     />
   );
 };
