@@ -4,7 +4,7 @@ import App from "./components/app/app.jsx";
 
 const COUNT_OFFERS = 312;
 const CITY_PLACES = {
-  placeNames: [`Beautiful &amp; luxurious apartment at great location`, `Wood and stone place`, `Canal View Prinsengracht`, `Nice, cozy, warm big bed apartment`, `Wood and stone place`],
+  placeNames: [`Beautiful & luxurious apartment at great location`, `Wood and stone place`, `Canal View Prinsengracht`, `Nice, cozy, warm big bed apartment`, `Wood and stone place`],
 };
 
 ReactDOM.render(
