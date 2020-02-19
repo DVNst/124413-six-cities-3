@@ -1,17 +1,26 @@
-import React from "react";
+import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 
 const OfferCard = (props) => {
   const {offer, onPlaceCardTitleClick, onCardMouseOver} = props;
   const {placeName, type, price, period, rating, mark, img} = offer;
 
+  function _renderMark() {
+    return mark ?
+      <Fragment>
+        <div className="place-card__mark">
+          <span>{mark}</span>
+        </div>
+      </Fragment> : ``;
+  }
+
   return (
     <article className="cities__place-card place-card"
-      onMouseOver={onCardMouseOver}
+      onMouseOver={() => {
+        onCardMouseOver(offer);
+      }}
     >
-      <div className="place-card__mark">
-        <span>{mark}</span>
-      </div>
+      {_renderMark()}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
           <img className="place-card__image" src={img} width="260" height="200" alt="Place image" />
@@ -58,3 +67,5 @@ OfferCard.propTypes = {
   onPlaceCardTitleClick: PropTypes.func.isRequired,
   onCardMouseOver: PropTypes.func.isRequired,
 };
+
+export default OfferCard;

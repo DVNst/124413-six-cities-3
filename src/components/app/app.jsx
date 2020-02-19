@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 
 const App = (props) => {
-  const {countOffers, cityPlaces} = props;
+  const {countOffers, offers} = props;
 
   return (
     <Main
+      offers={offers}
       countOffers={countOffers}
-      cityPlaces={cityPlaces}
       onPlaceCardTitleClick={() => {}}
     />
   );
@@ -16,9 +16,7 @@ const App = (props) => {
 
 App.propTypes = {
   countOffers: PropTypes.number.isRequired,
-  cityPlaces: PropTypes.shape({
-    placeNames: PropTypes.array.isRequired,
-  }).isRequired,
+  offers: PropTypes.array.isRequired,
 };
 
 export default App;

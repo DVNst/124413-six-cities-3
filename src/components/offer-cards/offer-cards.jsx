@@ -12,7 +12,7 @@ class OfferCards extends PureComponent {
   }
 
   render() {
-    const {offers, onPlaceCardTitleClick, onCardMouseOver} = this.props;
+    const {offers, onPlaceCardTitleClick} = this.props;
 
     return (
       <Fragment>
@@ -21,7 +21,11 @@ class OfferCards extends PureComponent {
             key={`${offer.placeName}-${index}`}
             offer={offer}
             onPlaceCardTitleClick={onPlaceCardTitleClick}
-            onCardMouseOver={onCardMouseOver}
+            onCardMouseOver={(CardMouseOver) => {
+              this.setState({
+                offerOver: CardMouseOver,
+              });
+            }}
           />
         ))}
       </Fragment>
@@ -32,5 +36,6 @@ class OfferCards extends PureComponent {
 OfferCards.propTypes = {
   offers: PropTypes.array.isRequired,
   onPlaceCardTitleClick: PropTypes.func.isRequired,
-  onCardMouseOver: PropTypes.func.isRequired,
 };
+
+export default OfferCards;
