@@ -11,13 +11,16 @@ const OfferCard = (props) => {
         <div className="place-card__mark">
           <span>{mark}</span>
         </div>
-      </Fragment> : ``;
+      </Fragment> : null;
   }
 
   return (
     <article className="cities__place-card place-card"
-      onMouseOver={() => {
+      onMouseEnter={() => {
         onCardMouseOver(offer);
+      }}
+      onMouseLeave={() => {
+        onCardMouseOver(null);
       }}
     >
       {_renderMark()}

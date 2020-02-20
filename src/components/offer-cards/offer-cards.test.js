@@ -1,8 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Main from "./main.jsx";
+import OfferCards from "./offer-cards.jsx";
 
-const COUNT_OFFERS = 312;
 const offers = [
   {
     placeName: `Beautiful & luxurious apartment at great location`,
@@ -47,11 +46,10 @@ const offers = [
   },
 ];
 
-it(`Should Main render correctly`, () => {
+it(`Should OfferCards render correctly`, () => {
   const tree = renderer.create(
-      <Main
+      <OfferCards
         offers={offers}
-        countOffers={COUNT_OFFERS}
         onPlaceCardTitleClick={() => {}}
       />)
     .toJSON();
