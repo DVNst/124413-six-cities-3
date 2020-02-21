@@ -9,6 +9,14 @@ class OfferCards extends PureComponent {
     this.state = {
       offerOver: null,
     };
+
+    this._handlerCardMouseOver = this._handlerCardMouseOver.bind(this);
+  }
+
+  _handlerCardMouseOver(offer) {
+    this.setState({
+      offerOver: offer,
+    });
   }
 
   render() {
@@ -21,11 +29,7 @@ class OfferCards extends PureComponent {
             key={`${offer.placeName}-${index}`}
             offer={offer}
             onPlaceCardTitleClick={onPlaceCardTitleClick}
-            onCardMouseOver={(CardMouseOver) => {
-              this.setState({
-                offerOver: CardMouseOver,
-              });
-            }}
+            onCardMouseOver={this._handlerCardMouseOver}
           />
         ))}
       </Fragment>
