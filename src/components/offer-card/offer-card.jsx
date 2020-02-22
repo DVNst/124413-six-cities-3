@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 const OfferCard = (props) => {
   const {offer, onPlaceCardTitleClick, onCardMouseOver} = props;
   const {placeName, type, price, period, rating, mark, img} = offer;
+  const RATING_STARS = Math.round(rating) * 20;
 
   function _renderMark() {
     return mark ?
@@ -44,11 +45,14 @@ const OfferCard = (props) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${rating}%`}}></span>
+            <span style={{width: `${RATING_STARS}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
-        <h2 className="place-card__name" onClick={onPlaceCardTitleClick}>
+        <h2 className="place-card__name"
+          onClick={() => {
+            onPlaceCardTitleClick(offer);
+          }}>
           <a href="#">{placeName}</a>
         </h2>
         <p className="place-card__type">{type}</p>

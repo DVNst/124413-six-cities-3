@@ -68,3 +68,21 @@ it(`Should Title card be pressed`, () => {
 
   expect(onPlaceCardTitleClick.mock.calls.length).toBe(offers.length);
 });
+
+it(`Should callback with the correct offer after pressed title card`, () => {
+  const onPlaceCardTitleClick = jest.fn();
+
+  const main = Enzyme.mount(
+      <Main
+        offers={offers}
+        countOffers={COUNT_OFFERS}
+        onPlaceCardTitleClick={onPlaceCardTitleClick}
+      />
+  );
+
+  const placeCardTitle = main.find(`h2.place-card__name`).at(0);
+  placeCardTitle.simulate(`click`);
+  expect(onPlaceCardTitleClick.mock.calls.length).toBe(1);
+
+  expect(onPlaceCardTitleClick).toHaveBeenCalledWith(offers[0]);
+});
