@@ -7,7 +7,7 @@ const offer = {
   type: `Apartment`,
   price: 120,
   period: `night`,
-  rating: 80,
+  rating: 4.4,
   mark: `Premium`,
   img: `img/apartment-01.jpg`,
 };
@@ -17,7 +17,7 @@ const offerWithoutMark = {
   type: `Private room`,
   price: 80,
   period: `night`,
-  rating: 80,
+  rating: 4.2,
   mark: ``,
   img: `img/room.jpg`,
 };

@@ -8,7 +8,7 @@ const offers = [
     type: `Apartment`,
     price: 120,
     period: `night`,
-    rating: 80,
+    rating: 4.4,
     mark: `Premium`,
     img: `img/apartment-01.jpg`,
   }, {
@@ -16,7 +16,7 @@ const offers = [
     type: `Private room`,
     price: 80,
     period: `night`,
-    rating: 80,
+    rating: 4.2,
     mark: ``,
     img: `img/room.jpg`,
   }, {
@@ -24,7 +24,7 @@ const offers = [
     type: `Apartment`,
     price: 132,
     period: `night`,
-    rating: 80,
+    rating: 3.5,
     mark: ``,
     img: `img/apartment-02.jpg`,
   }, {
@@ -32,7 +32,7 @@ const offers = [
     type: `Apartment`,
     price: 180,
     period: `night`,
-    rating: 100,
+    rating: 5,
     mark: `Premium`,
     img: `img/apartment-03.jpg`,
   }, {
@@ -40,7 +40,7 @@ const offers = [
     type: `Private room`,
     price: 80,
     period: `night`,
-    rating: 80,
+    rating: 4,
     mark: ``,
     img: `img/room.jpg`,
   },

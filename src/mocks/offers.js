@@ -4,7 +4,7 @@ export default [
     type: `Apartment`,
     price: 120,
     period: `night`,
-    rating: 80,
+    rating: 4.8,
     mark: `Premium`,
     img: `img/apartment-01.jpg`,
   }, {
@@ -12,7 +12,7 @@ export default [
     type: `Private room`,
     price: 80,
     period: `night`,
-    rating: 80,
+    rating: 4.2,
     mark: ``,
     img: `img/room.jpg`,
   }, {
@@ -20,7 +20,7 @@ export default [
     type: `Apartment`,
     price: 132,
     period: `night`,
-    rating: 80,
+    rating: 4.7,
     mark: ``,
     img: `img/apartment-02.jpg`,
   }, {
@@ -28,7 +28,7 @@ export default [
     type: `Apartment`,
     price: 180,
     period: `night`,
-    rating: 100,
+    rating: 5,
     mark: `Premium`,
     img: `img/apartment-03.jpg`,
   },
