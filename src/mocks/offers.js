@@ -7,6 +7,7 @@ export default [
     rating: 4.8,
     mark: `Premium`,
     img: `img/apartment-01.jpg`,
+    coordinates: [52.3909553943508, 4.85309666406198],
   }, {
     placeName: `Wood and stone place`,
     type: `Private room`,
@@ -15,6 +16,7 @@ export default [
     rating: 4.2,
     mark: ``,
     img: `img/room.jpg`,
+    coordinates: [52.369553943508, 4.85309666406198],
   }, {
     placeName: `Canal View Prinsengracht`,
     type: `Apartment`,
@@ -23,6 +25,7 @@ export default [
     rating: 4.7,
     mark: ``,
     img: `img/apartment-02.jpg`,
+    coordinates: [52.3909553943508, 4.929309666406198],
   }, {
     placeName: `Nice, cozy, warm big bed apartment`,
     type: `Apartment`,
@@ -31,5 +34,6 @@ export default [
     rating: 5,
     mark: `Premium`,
     img: `img/apartment-03.jpg`,
+    coordinates: [52.3809553943508, 4.939309666406198],
   },
 ];
