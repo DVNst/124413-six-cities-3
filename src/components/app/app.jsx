@@ -4,8 +4,6 @@ import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 import OfferDetails from "../offer-details/offer-details.jsx";
 
-const city = [52.38333, 4.9];
-
 class App extends PureComponent {
   constructor(props) {
     super(props);
@@ -30,7 +28,6 @@ class App extends PureComponent {
     if (!offerScreen) {
       return (
         <Main
-          city={city}
           countOffers={countOffers}
           offers={offers}
           onPlaceCardTitleClick={this._handlerPlaceCardTitleClick}

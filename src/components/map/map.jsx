@@ -1,45 +1,55 @@
-import React, {Fragment} from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import leaflet from "leaflet";
+import "../../const.js";
 
-const MapCity = (props) => {
-  const {city} = props;
+class Map extends PureComponent {
+  constructor(props) {
+    super(props);
 
-  const icon = leaflet.icon({
-    iconUrl: `img/pin.svg`,
-    iconSize: [30, 30]
-  });
+    this._mapRef = React.createRef();
+  }
 
-  const zoomZ = 12;
-  const map = leaflet.map(`map`, {
-    center: city,
-    zoom: zoomZ,
-    zoomControl: false,
-    marker: true
-  });
-  map.setView(city, zoomZ);
+  componentDidMount() {
+    const {offers} = this.props;
+    const city = [52.38333, 4.9];
 
-  leaflet
-    .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
-      attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
-    })
-    .addTo(map);
+    const icon = leaflet.icon({
+      iconUrl: `img/pin.svg`,
+      iconSize: [30, 30]
+    });
 
-  const offerCords = [52.3709553943508, 4.89309666406198];
+    const zoom = 12;
+    const map = leaflet.map(this._mapRef.current, {
+      center: city,
+      zoom: {zoom},
+      zoomControl: false,
+      marker: true
+    });
+    map.setView(city, zoom);
 
-  leaflet
-    .marker(offerCords, {icon})
-    .addTo(map);
+    leaflet
+      .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
+        attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
+      })
+      .addTo(map);
 
-  return (
-    <Fragment>
-      <div id="map"></div>
-    </Fragment>
-  );
+    offers.map((offer) => {
+      leaflet
+        .marker(offer.coordinates, {icon})
+        .addTo(map);
+    });
+  }
+
+  render() {
+    return (
+      <div ref={this._mapRef} style={{height: `100%`}}/>
+    );
+  }
+}
+
+Map.propTypes = {
+  offers: PropTypes.array.isRequired,
 };
 
-MapCity.propTypes = {
-  city: PropTypes.arrayOf(PropTypes.number).isRequired,
-};
-
-export default MapCity;
+export default Map;

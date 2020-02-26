@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import OfferCards from "../offer-cards/offer-cards.jsx";
-import MapCity from "../map/map.jsx";
+import Map from "../map/map.jsx";
 
 const Main = (props) => {
-  const {city, countOffers, offers, onPlaceCardTitleClick} = props;
+  const {countOffers, offers, onPlaceCardTitleClick} = props;
 
   return (
     <React.Fragment>
@@ -110,8 +110,8 @@ const Main = (props) => {
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
-                  {<MapCity
-                    city={city}
+                  {<Map
+                    offers={offers}
                   />}
                 </section>
               </div>
@@ -124,7 +124,6 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  city: PropTypes.arrayOf(PropTypes.number).isRequired,
   countOffers: PropTypes.number.isRequired,
   offers: PropTypes.array.isRequired,
   onPlaceCardTitleClick: PropTypes.func.isRequired,
