@@ -331,13 +331,15 @@ const OfferDetails = (props) => {
 
 OfferDetails.propTypes = {
   offer: PropTypes.shape({
+    city: PropTypes.string.isRequired,
     placeName: PropTypes.string.isRequired,
     type: PropTypes.string,
     price: PropTypes.number.isRequired,
     period: PropTypes.string,
     rating: PropTypes.number,
     mark: PropTypes.string,
-    img: PropTypes.string
+    img: PropTypes.string,
+    coordinates: PropTypes.arrayOf(PropTypes.number),
   }).isRequired,
 };
 

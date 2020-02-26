@@ -1,5 +1,6 @@
 export default [
   {
+    city: `amsterdam`,
     placeName: `Beautiful & luxurious apartment at great location`,
     type: `Apartment`,
     price: 120,
@@ -9,6 +10,7 @@ export default [
     img: `img/apartment-01.jpg`,
     coordinates: [52.3909553943508, 4.85309666406198],
   }, {
+    city: `amsterdam`,
     placeName: `Wood and stone place`,
     type: `Private room`,
     price: 80,
@@ -18,6 +20,7 @@ export default [
     img: `img/room.jpg`,
     coordinates: [52.369553943508, 4.85309666406198],
   }, {
+    city: `amsterdam`,
     placeName: `Canal View Prinsengracht`,
     type: `Apartment`,
     price: 132,
@@ -27,6 +30,7 @@ export default [
     img: `img/apartment-02.jpg`,
     coordinates: [52.3909553943508, 4.929309666406198],
   }, {
+    city: `amsterdam`,
     placeName: `Nice, cozy, warm big bed apartment`,
     type: `Apartment`,
     price: 180,
