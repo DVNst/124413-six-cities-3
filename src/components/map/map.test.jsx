@@ -57,14 +57,12 @@ const offers = [
 ];
 
 it(`Should Map render correctly`, () => {
-  const tree = renderer.create(
-      <Map
-        offers={offers}
-      />, {
-        createNodeMock: () => {
-          return {};
-        }
-      }).toJSON();
+  const tree = renderer
+    .create(
+        <Map
+          offers={offers}
+        />)
+    .toJSON();
 
   expect(tree).toMatchSnapshot();
 });

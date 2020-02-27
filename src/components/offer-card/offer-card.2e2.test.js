@@ -6,13 +6,15 @@ import OfferCard from "./offer-card.jsx";
 Enzyme.configure({adapter: new Adapter()});
 
 const offer = {
+  city: `Amsterdam`,
   placeName: `Beautiful & luxurious apartment at great location`,
   type: `Apartment`,
   price: 120,
   period: `night`,
-  rating: 80,
+  rating: 4.4,
   mark: `Premium`,
   img: `img/apartment-01.jpg`,
+  coordinates: [52.3909553943508, 4.85309666406198],
 };
 
 it(`Returns a OfferCard on hover`, () => {

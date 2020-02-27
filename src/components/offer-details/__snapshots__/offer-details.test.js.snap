@@ -175,7 +175,7 @@ exports[`Should OfferDetails render correctly 1`] = `
               <span
                 style={
                   Object {
-                    "width": "1600%",
+                    "width": "80%",
                   }
                 }
               />
@@ -188,7 +188,7 @@ exports[`Should OfferDetails render correctly 1`] = `
             <span
               className="property__rating-value rating__value"
             >
-              80
+              4.4
             </span>
           </div>
           <ul
