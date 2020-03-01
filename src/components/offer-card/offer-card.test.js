@@ -3,6 +3,7 @@ import renderer from "react-test-renderer";
 import OfferCard from "./offer-card.jsx";
 
 const offer = {
+  id: 1,
   city: `Amsterdam`,
   placeName: `Beautiful & luxurious apartment at great location`,
   type: `Apartment`,
@@ -15,6 +16,7 @@ const offer = {
 };
 
 const offerWithoutMark = {
+  id: 2,
   city: `Amsterdam`,
   placeName: `Wood and stone place`,
   type: `Private room`,
@@ -26,10 +28,13 @@ const offerWithoutMark = {
   oordinates: [52.3709553943508, 4.89309666406198],
 };
 
+const MainClassName = `cities`;
+
 it(`Should OfferCard render correctly`, () => {
   const tree = renderer.create(
       <OfferCard
         offer={offer}
+        MainClassName={MainClassName}
         onPlaceCardTitleClick={() => {}}
         onCardMouseOver={() => {}}
       />)
@@ -42,6 +47,7 @@ it(`Should OfferCard without mark render correctly`, () => {
   const tree = renderer.create(
       <OfferCard
         offer={offerWithoutMark}
+        MainClassName={MainClassName}
         onPlaceCardTitleClick={() => {}}
         onCardMouseOver={() => {}}
       />)

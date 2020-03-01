@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import OfferDetails from "./offer-details.jsx";
+import OfferReviews from "./offer-reviews.jsx";
 
 const offer = {
   id: 1,
@@ -12,16 +12,15 @@ const offer = {
   rating: 4.4,
   mark: `Premium`,
   img: `img/apartment-01.jpg`,
-  oordinates: [52.3709553943508, 4.89309666406198],
+  coordinates: [52.3909553943508, 4.85309666406198],
 };
 
-it(`Should OfferDetails render correctly`, () => {
+it(`Should OfferReviews render correctly`, () => {
   const tree = renderer.create(
-      <OfferDetails
+      <OfferReviews
         offer={offer}
-        onPlaceCardTitleClick = {() => {}}
-      />
-  );
+      />)
+    .toJSON();
 
   expect(tree).toMatchSnapshot();
 });

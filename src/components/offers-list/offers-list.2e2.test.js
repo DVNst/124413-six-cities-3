@@ -1,9 +1,15 @@
 import React from "react";
-import renderer from "react-test-renderer";
-import OfferCards from "./offer-cards.jsx";
+import Enzyme, {mount} from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+import OffersList from "./offers-list.jsx";
+
+Enzyme.configure({
+  adapter: new Adapter(),
+});
 
 const offers = [
   {
+    id: 1,
     city: `Amsterdam`,
     placeName: `Beautiful & luxurious apartment at great location`,
     type: `Apartment`,
@@ -14,6 +20,7 @@ const offers = [
     img: `img/apartment-01.jpg`,
     coordinates: [52.3909553943508, 4.85309666406198],
   }, {
+    id: 2,
     city: `Amsterdam`,
     placeName: `Wood and stone place`,
     type: `Private room`,
@@ -24,6 +31,7 @@ const offers = [
     img: `img/room.jpg`,
     coordinates: [52.369553943508, 4.85309666406198],
   }, {
+    id: 3,
     city: `Amsterdam`,
     placeName: `Canal View Prinsengracht`,
     type: `Apartment`,
@@ -34,6 +42,7 @@ const offers = [
     img: `img/apartment-02.jpg`,
     coordinates: [52.3909553943508, 4.929309666406198],
   }, {
+    id: 4,
     city: `Amsterdam`,
     placeName: `Nice, cozy, warm big bed apartment`,
     type: `Apartment`,
@@ -44,6 +53,7 @@ const offers = [
     img: `img/apartment-03.jpg`,
     coordinates: [52.3809553943508, 4.939309666406198],
   }, {
+    id: 5,
     city: `Amsterdam`,
     placeName: `Wood and stone place`,
     type: `Private room`,
@@ -56,13 +66,22 @@ const offers = [
   },
 ];
 
-it(`Should OfferCards render correctly`, () => {
-  const tree = renderer.create(
-      <OfferCards
+it(`Should change state when offer onHover`, () => {
+  const cards = mount(
+      <OffersList
         offers={offers}
         onPlaceCardTitleClick={() => {}}
-      />)
-    .toJSON();
+      />
+  );
 
-  expect(tree).toMatchSnapshot();
+  const card = cards.find(`.place-card`);
+
+  card.at(0).simulate(`mouseenter`);
+  expect(cards.state().offerOver).toBe(offers[0]);
+
+  card.at(0).simulate(`mouseleave`);
+  expect(cards.state().offerOver).toEqual(null);
+
+  card.at(1).simulate(`mouseenter`);
+  expect(cards.state().offerOver).toBe(offers[1]);
 });

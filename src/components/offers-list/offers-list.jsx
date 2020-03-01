@@ -2,7 +2,7 @@ import React, {Fragment, PureComponent} from "react";
 import PropTypes from "prop-types";
 import OfferCard from "../offer-card/offer-card.jsx";
 
-class OfferCards extends PureComponent {
+class OffersList extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -20,7 +20,7 @@ class OfferCards extends PureComponent {
   }
 
   render() {
-    const {offers, onPlaceCardTitleClick} = this.props;
+    const {offers, MainClassName, onPlaceCardTitleClick} = this.props;
 
     return (
       <Fragment>
@@ -28,6 +28,7 @@ class OfferCards extends PureComponent {
           <OfferCard
             key={`${offer.placeName}-${index}`}
             offer={offer}
+            MainClassName={MainClassName}
             onPlaceCardTitleClick={onPlaceCardTitleClick}
             onCardMouseOver={this._handlerCardMouseOver}
           />
@@ -37,9 +38,14 @@ class OfferCards extends PureComponent {
   }
 }
 
-OfferCards.propTypes = {
+OffersList.propTypes = {
   offers: PropTypes.array.isRequired,
+  MainClassName: PropTypes.string,
   onPlaceCardTitleClick: PropTypes.func.isRequired,
 };
 
-export default OfferCards;
+OffersList.defaultProps = {
+  MainClassName: `cities`
+};
+
+export default OffersList;

@@ -1,9 +1,48 @@
 import React, {Fragment} from "react";
 import PropTypes from "prop-types";
+import Map from "../map/map.jsx";
 import OfferReviews from "../offer-reviews/offer-reviews.jsx";
+import OffersList from "../offers-list/offers-list.jsx";
+
+const offers = [
+  {
+    id: 2,
+    city: `Amsterdam`,
+    placeName: `Wood and stone place`,
+    type: `Private room`,
+    price: 80,
+    period: `night`,
+    rating: 4.2,
+    mark: ``,
+    img: `img/room.jpg`,
+    coordinates: [52.369553943508, 4.85309666406198],
+  }, {
+    id: 3,
+    city: `Amsterdam`,
+    placeName: `Canal View Prinsengracht`,
+    type: `Apartment`,
+    price: 132,
+    period: `night`,
+    rating: 4.7,
+    mark: ``,
+    img: `img/apartment-02.jpg`,
+    coordinates: [52.3909553943508, 4.929309666406198],
+  }, {
+    id: 4,
+    city: `Amsterdam`,
+    placeName: `Nice, cozy, warm big bed apartment`,
+    type: `Apartment`,
+    price: 180,
+    period: `night`,
+    rating: 5,
+    mark: `Premium`,
+    img: `img/apartment-03.jpg`,
+    coordinates: [52.3809553943508, 4.939309666406198],
+  },
+];
 
 const OfferDetails = (props) => {
-  const {offer} = props;
+  const {offer, onPlaceCardTitleClick} = props;
   const {placeName, type, price, period, rating, mark, img} = offer;
   const RATING_STARS = Math.round(rating) * 20;
 
@@ -158,105 +197,21 @@ const OfferDetails = (props) => {
                 </section>
               </div>
             </div>
-            <section className="property__map map" />
+            <section className="property__map map">
+              {<Map
+                offers={offers}
+              />}
+            </section>
           </section>
           <div className="container">
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
               <div className="near-places__list places__list">
-                <article className="near-places__card place-card">
-                  <div className="near-places__image-wrapper place-card__image-wrapper">
-                    <a href="#">
-                      <img className="place-card__image" src="img/room.jpg" width={260} height={200} alt="Place image" />
-                    </a>
-                  </div>
-                  <div className="place-card__info">
-                    <div className="place-card__price-wrapper">
-                      <div className="place-card__price">
-                        <b className="place-card__price-value">€80</b>
-                        <span className="place-card__price-text">/&nbsp;night</span>
-                      </div>
-                      <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
-                        <svg className="place-card__bookmark-icon" width={18} height={19}>
-                          <use xlinkHref="#icon-bookmark" />
-                        </svg>
-                        <span className="visually-hidden">In bookmarks</span>
-                      </button>
-                    </div>
-                    <div className="place-card__rating rating">
-                      <div className="place-card__stars rating__stars">
-                        <span style={{width: `80%`}} />
-                        <span className="visually-hidden">Rating</span>
-                      </div>
-                    </div>
-                    <h2 className="place-card__name">
-                      <a href="#">Wood and stone place</a>
-                    </h2>
-                    <p className="place-card__type">Private room</p>
-                  </div>
-                </article>
-                <article className="near-places__card place-card">
-                  <div className="near-places__image-wrapper place-card__image-wrapper">
-                    <a href="#">
-                      <img className="place-card__image" src="img/apartment-02.jpg" width={260} height={200} alt="Place image" />
-                    </a>
-                  </div>
-                  <div className="place-card__info">
-                    <div className="place-card__price-wrapper">
-                      <div className="place-card__price">
-                        <b className="place-card__price-value">€132</b>
-                        <span className="place-card__price-text">/&nbsp;night</span>
-                      </div>
-                      <button className="place-card__bookmark-button button" type="button">
-                        <svg className="place-card__bookmark-icon" width={18} height={19}>
-                          <use xlinkHref="#icon-bookmark" />
-                        </svg>
-                        <span className="visually-hidden">To bookmarks</span>
-                      </button>
-                    </div>
-                    <div className="place-card__rating rating">
-                      <div className="place-card__stars rating__stars">
-                        <span style={{width: `80%`}} />
-                        <span className="visually-hidden">Rating</span>
-                      </div>
-                    </div>
-                    <h2 className="place-card__name">
-                      <a href="#">Canal View Prinsengracht</a>
-                    </h2>
-                    <p className="place-card__type">Apartment</p>
-                  </div>
-                </article>
-                <article className="near-places__card place-card">
-                  <div className="near-places__image-wrapper place-card__image-wrapper">
-                    <a href="#">
-                      <img className="place-card__image" src="img/apartment-03.jpg" width={260} height={200} alt="Place image" />
-                    </a>
-                  </div>
-                  <div className="place-card__info">
-                    <div className="place-card__price-wrapper">
-                      <div className="place-card__price">
-                        <b className="place-card__price-value">€180</b>
-                        <span className="place-card__price-text">/&nbsp;night</span>
-                      </div>
-                      <button className="place-card__bookmark-button button" type="button">
-                        <svg className="place-card__bookmark-icon" width={18} height={19}>
-                          <use xlinkHref="#icon-bookmark" />
-                        </svg>
-                        <span className="visually-hidden">To bookmarks</span>
-                      </button>
-                    </div>
-                    <div className="place-card__rating rating">
-                      <div className="place-card__stars rating__stars">
-                        <span style={{width: `100%`}} />
-                        <span className="visually-hidden">Rating</span>
-                      </div>
-                    </div>
-                    <h2 className="place-card__name">
-                      <a href="#">Nice, cozy, warm big bed apartment</a>
-                    </h2>
-                    <p className="place-card__type">Apartment</p>
-                  </div>
-                </article>
+                {<OffersList
+                  offers={offers}
+                  MainClassName = {`near-places`}
+                  onPlaceCardTitleClick={onPlaceCardTitleClick}
+                />}
               </div>
             </section>
           </div>
@@ -278,6 +233,7 @@ OfferDetails.propTypes = {
     img: PropTypes.string,
     coordinates: PropTypes.arrayOf(PropTypes.number),
   }).isRequired,
+  onPlaceCardTitleClick: PropTypes.func.isRequired,
 };
 
 export default OfferDetails;

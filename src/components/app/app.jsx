@@ -37,6 +37,7 @@ class App extends PureComponent {
       return (
         <OfferDetails
           offer={offerScreen}
+          onPlaceCardTitleClick={this._handlerPlaceCardTitleClick}
         />
       );
     }
@@ -44,6 +45,7 @@ class App extends PureComponent {
 
   render() {
     const {offers} = this.props;
+    const {offerScreen} = this.state;
 
     return (
       <BrowserRouter>
@@ -53,7 +55,8 @@ class App extends PureComponent {
           </Route>
           <Route exact path="/offer">
             <OfferDetails
-              offer={offers[0]}
+              offer={offerScreen ? offerScreen : offers[0]}
+              onPlaceCardTitleClick={this._handlerPlaceCardTitleClick}
             />
           </Route>
         </Switch>

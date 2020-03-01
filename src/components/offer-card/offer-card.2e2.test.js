@@ -6,6 +6,7 @@ import OfferCard from "./offer-card.jsx";
 Enzyme.configure({adapter: new Adapter()});
 
 const offer = {
+  id: 1,
   city: `Amsterdam`,
   placeName: `Beautiful & luxurious apartment at great location`,
   type: `Apartment`,
@@ -17,12 +18,15 @@ const offer = {
   coordinates: [52.3909553943508, 4.85309666406198],
 };
 
+const MainClassName = `cities`;
+
 it(`Returns a OfferCard on hover`, () => {
   const onCardMouseOver = jest.fn();
 
   const offerCard = shallow(
       <OfferCard
         offer={offer}
+        MainClassName={MainClassName}
         onPlaceCardTitleClick={() => {}}
         onCardMouseOver={onCardMouseOver}
       />

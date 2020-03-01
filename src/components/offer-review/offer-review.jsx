@@ -7,9 +7,7 @@ const OfferReview = (props) => {
   const RATING_STARS = Math.round(rating) * 20;
   const REVIEWS_TIME = new Date(date);
   const MONTH = REVIEWS_TIME.toLocaleString(`eng`, {month: `long`});
-  //const YEAR = REVIEWS_TIME.toLocaleString(`eng`, {year: `long`});
-
-  console.log(REVIEWS_TIME.toLocaleString(`eng`, {year: `long`}));
+  const YEAR = REVIEWS_TIME.getFullYear();
 
   return (
     <li className="reviews__item">
@@ -27,7 +25,7 @@ const OfferReview = (props) => {
           </div>
         </div>
         <p className="reviews__text">{text}</p>
-        <time className="reviews__time" dateTime={date}>`{MONTH} {YEAR}`</time>
+        <time className="reviews__time" dateTime={date}>{`${MONTH} ${YEAR}`}</time>
       </div>
     </li>
   );

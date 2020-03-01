@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import OfferCards from "../offer-cards/offer-cards.jsx";
+import OffersList from "../offers-list/offers-list.jsx";
 import Map from "../map/map.jsx";
 
 const Main = (props) => {
@@ -102,7 +102,7 @@ const Main = (props) => {
                   */}
                 </form>
                 <div className="cities__places-list places__list tabs__content">
-                  {<OfferCards
+                  {<OffersList
                     offers={offers}
                     onPlaceCardTitleClick={onPlaceCardTitleClick}
                   />}
