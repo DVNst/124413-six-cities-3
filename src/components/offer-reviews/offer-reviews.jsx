@@ -9,11 +9,14 @@ const OfferReviews = (props) => {
     return review.id === offer.id;
   });
 
+  _reviews.sort((a, b) => a.date > b.date ? 1 : -1);
+
   return (
     <Fragment>
       <h2 className="reviews__title">Reviews · <span className="reviews__amount">{_reviews.length}</span></h2>
       <ul className="reviews__list">
         {_reviews.map((review, index) => (
+          (index < 10) &&
           <OfferReview
             key={`${review.text}-${index}`}
             review={review}
