@@ -1,21 +1,15 @@
 import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 import OfferReview from "../offer-review/offer-review.jsx";
-import reviews from "../../mocks/review.js";
 
 const OfferReviews = (props) => {
-  const {offer} = props;
-  const _reviews = reviews.filter((review) => {
-    return review.id === offer.id;
-  });
-
-  _reviews.sort((a, b) => a.date > b.date ? 1 : -1);
+  const {reviews} = props;
 
   return (
     <Fragment>
-      <h2 className="reviews__title">Reviews · <span className="reviews__amount">{_reviews.length}</span></h2>
+      <h2 className="reviews__title">Reviews · <span className="reviews__amount">{reviews.length}</span></h2>
       <ul className="reviews__list">
-        {_reviews.map((review, index) => (
+        {reviews.map((review, index) => (
           (index < 10) &&
           <OfferReview
             key={`${review.text}-${index}`}
@@ -70,18 +64,9 @@ const OfferReviews = (props) => {
 };
 
 OfferReviews.propTypes = {
-  offer: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    city: PropTypes.string.isRequired,
-    placeName: PropTypes.string.isRequired,
-    type: PropTypes.string,
-    price: PropTypes.number.isRequired,
-    period: PropTypes.string,
-    rating: PropTypes.number,
-    mark: PropTypes.string,
-    img: PropTypes.string,
-    coordinates: PropTypes.arrayOf(PropTypes.number),
-  }).isRequired,
+  reviews: PropTypes.arrayOf(
+      PropTypes.object
+  ).isRequired,
 };
 
 export default OfferReviews;

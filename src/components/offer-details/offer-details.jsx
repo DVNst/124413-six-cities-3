@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Map from "../map/map.jsx";
 import OfferReviews from "../offer-reviews/offer-reviews.jsx";
 import OffersList from "../offers-list/offers-list.jsx";
+import reviews from "../../mocks/review.js";
 
 const offers = [
   {
@@ -45,6 +46,10 @@ const OfferDetails = (props) => {
   const {offer, onPlaceCardTitleClick} = props;
   const {placeName, type, price, period, rating, mark, img} = offer;
   const RATING_STARS = Math.round(rating) * 20;
+
+  const _reviews = reviews.filter((review) => {
+    return review.id === offer.id;
+  }).sort((a, b) => a.date > b.date ? -1 : 1);
 
   return (
     <Fragment>
@@ -192,7 +197,7 @@ const OfferDetails = (props) => {
                 </div>
                 <section className="property__reviews reviews">
                   <OfferReviews
-                    offer={offer}
+                    reviews={_reviews}
                   />
                 </section>
               </div>
@@ -223,6 +228,7 @@ const OfferDetails = (props) => {
 
 OfferDetails.propTypes = {
   offer: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     city: PropTypes.string.isRequired,
     placeName: PropTypes.string.isRequired,
     type: PropTypes.string,
