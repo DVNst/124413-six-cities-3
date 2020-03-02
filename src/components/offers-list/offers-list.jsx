@@ -20,7 +20,7 @@ class OffersList extends PureComponent {
   }
 
   render() {
-    const {offers, MainClassName, onPlaceCardTitleClick} = this.props;
+    const {offers, mainClassName, onPlaceCardTitleClick} = this.props;
 
     return (
       <Fragment>
@@ -28,7 +28,7 @@ class OffersList extends PureComponent {
           <OfferCard
             key={`${offer.placeName}-${index}`}
             offer={offer}
-            MainClassName={MainClassName}
+            mainClassName={mainClassName}
             onPlaceCardTitleClick={onPlaceCardTitleClick}
             onCardMouseOver={this._handlerCardMouseOver}
           />
@@ -40,12 +40,12 @@ class OffersList extends PureComponent {
 
 OffersList.propTypes = {
   offers: PropTypes.array.isRequired,
-  MainClassName: PropTypes.string,
+  mainClassName: PropTypes.string,
   onPlaceCardTitleClick: PropTypes.func.isRequired,
 };
 
 OffersList.defaultProps = {
-  MainClassName: `cities`
+  mainClassName: `cities`
 };
 
 export default OffersList;

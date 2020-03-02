@@ -2,11 +2,11 @@ import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 
 const OfferCard = (props) => {
-  const {offer, MainClassName, onPlaceCardTitleClick, onCardMouseOver} = props;
+  const {offer, mainClassName, onPlaceCardTitleClick, onCardMouseOver} = props;
   const {placeName, type, price, period, rating, mark, img} = offer;
   const RATING_STARS = Math.round(rating) * 20;
 
-  const articleClassName = (MainClassName === `cities`) ? `${MainClassName}__place-card` : `${MainClassName}__card`;
+  const articleClassName = (mainClassName === `cities`) ? `${mainClassName}__place-card` : `${mainClassName}__card`;
 
   function _renderMark() {
     return mark ?
@@ -27,7 +27,7 @@ const OfferCard = (props) => {
       }}
     >
       {_renderMark()}
-      <div className={`${MainClassName}__image-wrapper place-card__image-wrapper`}>
+      <div className={`${mainClassName}__image-wrapper place-card__image-wrapper`}>
         <a href="#">
           <img className="place-card__image" src={img} width="260" height="200" alt="Place image" />
         </a>
@@ -76,7 +76,7 @@ OfferCard.propTypes = {
     img: PropTypes.string,
     coordinates: PropTypes.arrayOf(PropTypes.number),
   }).isRequired,
-  MainClassName: PropTypes.string.isRequired,
+  mainClassName: PropTypes.string.isRequired,
   onPlaceCardTitleClick: PropTypes.func.isRequired,
   onCardMouseOver: PropTypes.func.isRequired,
 };

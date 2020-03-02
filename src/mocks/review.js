@@ -8,74 +8,14 @@ export default [
   }, {
     id: 2,
     userName: `Floris`,
-    text: `12. Functional, clean, friendly. Value for money.`,
+    text: `Functional, clean, friendly. Value for money.`,
     rating: 4.2,
     date: `2020-02-12`,
   }, {
     id: 2,
     userName: `Ademir`,
-    text: `11. Nice atmosphere, look like just new, friendly staff. Everything is automated, from the keys (card actually), to the lockers for storing your luggage for the day.`,
+    text: `Nice atmosphere, look like just new, friendly staff. Everything is automated, from the keys (card actually), to the lockers for storing your luggage for the day.`,
     rating: 3.8,
     date: `2020-02-11`,
-  }, {
-    id: 2,
-    userName: `Ademir`,
-    text: `10. Nice atmosphere, look like just new, friendly staff. Everything is automated, from the keys (card actually), to the lockers for storing your luggage for the day.`,
-    rating: 3.8,
-    date: `2020-02-10`,
-  }, {
-    id: 2,
-    userName: `Ademir`,
-    text: `8. Nice atmosphere, look like just new, friendly staff. Everything is automated, from the keys (card actually), to the lockers for storing your luggage for the day.`,
-    rating: 3.8,
-    date: `2020-02-08`,
-  }, {
-    id: 2,
-    userName: `Ademir`,
-    text: `9. Nice atmosphere, look like just new, friendly staff. Everything is automated, from the keys (card actually), to the lockers for storing your luggage for the day.`,
-    rating: 3.8,
-    date: `2020-02-09`,
-  }, {
-    id: 2,
-    userName: `Ademir`,
-    text: `1. Nice atmosphere, look like just new, friendly staff. Everything is automated, from the keys (card actually), to the lockers for storing your luggage for the day.`,
-    rating: 3.8,
-    date: `2020-02-01`,
-  }, {
-    id: 2,
-    userName: `Ademir`,
-    text: `2. Nice atmosphere, look like just new, friendly staff. Everything is automated, from the keys (card actually), to the lockers for storing your luggage for the day.`,
-    rating: 3.8,
-    date: `2020-02-02`,
-  }, {
-    id: 2,
-    userName: `Ademir`,
-    text: `3. Nice atmosphere, look like just new, friendly staff. Everything is automated, from the keys (card actually), to the lockers for storing your luggage for the day.`,
-    rating: 3.8,
-    date: `2020-02-03`,
-  }, {
-    id: 2,
-    userName: `Ademir`,
-    text: `4. Nice atmosphere, look like just new, friendly staff. Everything is automated, from the keys (card actually), to the lockers for storing your luggage for the day.`,
-    rating: 3.8,
-    date: `2020-02-04`,
-  }, {
-    id: 2,
-    userName: `Ademir`,
-    text: `5. Nice atmosphere, look like just new, friendly staff. Everything is automated, from the keys (card actually), to the lockers for storing your luggage for the day.`,
-    rating: 3.8,
-    date: `2020-02-05`,
-  }, {
-    id: 2,
-    userName: `Ademir`,
-    text: `6. Nice atmosphere, look like just new, friendly staff. Everything is automated, from the keys (card actually), to the lockers for storing your luggage for the day.`,
-    rating: 3.8,
-    date: `2020-02-06`,
-  }, {
-    id: 2,
-    userName: `Ademir`,
-    text: `7. Nice atmosphere, look like just new, friendly staff. Everything is automated, from the keys (card actually), to the lockers for storing your luggage for the day.`,
-    rating: 3.8,
-    date: `2020-02-07`,
-  },
+  }
 ];

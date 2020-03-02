@@ -47,7 +47,7 @@ const OfferDetails = (props) => {
   const {placeName, type, price, period, rating, mark, img} = offer;
   const RATING_STARS = Math.round(rating) * 20;
 
-  const _reviews = reviews.filter((review) => {
+  const filteredReviews = reviews.filter((review) => {
     return review.id === offer.id;
   }).sort((a, b) => a.date > b.date ? -1 : 1);
 
@@ -197,7 +197,7 @@ const OfferDetails = (props) => {
                 </div>
                 <section className="property__reviews reviews">
                   <OfferReviews
-                    reviews={_reviews}
+                    reviews={filteredReviews}
                   />
                 </section>
               </div>
@@ -214,7 +214,7 @@ const OfferDetails = (props) => {
               <div className="near-places__list places__list">
                 {<OffersList
                   offers={offers}
-                  MainClassName = {`near-places`}
+                  mainClassName = {`near-places`}
                   onPlaceCardTitleClick={onPlaceCardTitleClick}
                 />}
               </div>
