@@ -1,5 +1,7 @@
 import React, {PureComponent} from "react";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer.js";
 import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 import OfferDetails from "../offer-details/offer-details.jsx";
@@ -70,4 +72,16 @@ App.propTypes = {
   offers: PropTypes.array.isRequired,
 };
 
+const mapStateToProps = (state) => ({
+  offerScreen: state.offerScreen,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onPlaceCardTitleClick(offer) {
+    dispatch(ActionCreator.changeOfferScreen(offer));
+  },
+});
+
 export default App;
+// export {App};
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
