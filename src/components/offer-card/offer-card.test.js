@@ -28,13 +28,13 @@ const offerWithoutMark = {
   oordinates: [52.3709553943508, 4.89309666406198],
 };
 
-const MainClassName = `cities`;
+const mainClassName = `cities`;
 
 it(`Should OfferCard render correctly`, () => {
   const tree = renderer.create(
       <OfferCard
         offer={offer}
-        MainClassName={MainClassName}
+        mainClassName={mainClassName}
         onPlaceCardTitleClick={() => {}}
         onCardMouseOver={() => {}}
       />)
@@ -47,7 +47,7 @@ it(`Should OfferCard without mark render correctly`, () => {
   const tree = renderer.create(
       <OfferCard
         offer={offerWithoutMark}
-        MainClassName={MainClassName}
+        mainClassName={mainClassName}
         onPlaceCardTitleClick={() => {}}
         onCardMouseOver={() => {}}
       />)

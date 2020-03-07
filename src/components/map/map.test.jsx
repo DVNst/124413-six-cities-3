@@ -61,6 +61,7 @@ it(`Should Map render correctly`, () => {
     .create(
         <Map
           offers={offers}
+          cityName={offers[0].city}
         />)
     .toJSON();
 

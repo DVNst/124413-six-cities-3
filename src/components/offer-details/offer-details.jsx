@@ -205,6 +205,7 @@ const OfferDetails = (props) => {
             <section className="property__map map">
               {<Map
                 offers={offers}
+                cityName={offers[0].city}
               />}
             </section>
           </section>

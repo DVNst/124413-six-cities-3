@@ -7,47 +7,32 @@ import Main from "../main/main.jsx";
 import OfferDetails from "../offer-details/offer-details.jsx";
 
 class App extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      offerScreen: false,
-    };
-
-    this._handlerPlaceCardTitleClick = this._handlerPlaceCardTitleClick.bind(this);
-  }
-
-  _handlerPlaceCardTitleClick(offer) {
-    this.setState({
-      offerScreen: offer,
-    });
-  }
-
   _renderScreen() {
-    const {countOffers, offers} = this.props;
-    const {offerScreen} = this.state;
+    const {offers, city, offerScreen, onCityNameClick, onPlaceCardTitleClick} = this.props;
+    const countOffers = offers.length;
 
     if (!offerScreen) {
       return (
         <Main
           countOffers={countOffers}
           offers={offers}
-          onPlaceCardTitleClick={this._handlerPlaceCardTitleClick}
+          city={city}
+          onCityNameClick={onCityNameClick}
+          onPlaceCardTitleClick={onPlaceCardTitleClick}
         />
       );
     } else {
       return (
         <OfferDetails
           offer={offerScreen}
-          onPlaceCardTitleClick={this._handlerPlaceCardTitleClick}
+          onPlaceCardTitleClick={onPlaceCardTitleClick}
         />
       );
     }
   }
 
   render() {
-    const {offers} = this.props;
-    const {offerScreen} = this.state;
+    const {offers, offerScreen, onPlaceCardTitleClick} = this.props;
 
     return (
       <BrowserRouter>
@@ -58,7 +43,7 @@ class App extends PureComponent {
           <Route exact path="/offer">
             <OfferDetails
               offer={offerScreen ? offerScreen : offers[0]}
-              onPlaceCardTitleClick={this._handlerPlaceCardTitleClick}
+              onPlaceCardTitleClick={onPlaceCardTitleClick}
             />
           </Route>
         </Switch>
@@ -68,11 +53,16 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  countOffers: PropTypes.number.isRequired,
   offers: PropTypes.array.isRequired,
+  city: PropTypes.string.isRequired,
+  offerScreen: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]).isRequired,
+  onCityNameClick: PropTypes.func.isRequired,
+  onPlaceCardTitleClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
+  offers: state.offers,
+  city: state.city,
   offerScreen: state.offerScreen,
 });
 
@@ -80,8 +70,11 @@ const mapDispatchToProps = (dispatch) => ({
   onPlaceCardTitleClick(offer) {
     dispatch(ActionCreator.changeOfferScreen(offer));
   },
+  onCityNameClick(city) {
+    dispatch(ActionCreator.changeCity(city));
+    dispatch(ActionCreator.getOffers(city));
+  },
 });
 
-export default App;
-// export {App};
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
+export {App};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

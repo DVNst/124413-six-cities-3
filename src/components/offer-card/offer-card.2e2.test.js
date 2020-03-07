@@ -18,7 +18,7 @@ const offer = {
   coordinates: [52.3909553943508, 4.85309666406198],
 };
 
-const MainClassName = `cities`;
+const mainClassName = `cities`;
 
 it(`Returns a OfferCard on hover`, () => {
   const onCardMouseOver = jest.fn();
@@ -26,7 +26,7 @@ it(`Returns a OfferCard on hover`, () => {
   const offerCard = shallow(
       <OfferCard
         offer={offer}
-        MainClassName={MainClassName}
+        mainClassName={mainClassName}
         onPlaceCardTitleClick={() => {}}
         onCardMouseOver={onCardMouseOver}
       />
