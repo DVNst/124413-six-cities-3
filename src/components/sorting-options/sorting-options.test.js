@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Map from "./map.jsx";
+import SortingOptions from "./sorting-options.jsx";
 
 const offers = [
   {
@@ -53,9 +53,9 @@ const offers = [
 it(`Should Map render correctly`, () => {
   const tree = renderer
     .create(
-        <Map
+        <SortingOptions
           offers={offers}
-          cityName={offers[0].city}
+          onSortOptionClick={() => {}}
         />)
     .toJSON();
 

@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 const OfferCard = (props) => {
@@ -8,25 +8,21 @@ const OfferCard = (props) => {
 
   const articleClassName = (mainClassName === `cities`) ? `${mainClassName}__place-card` : `${mainClassName}__card`;
 
-  function _renderMark() {
-    return mark ?
-      <Fragment>
-        <div className="place-card__mark">
-          <span>{mark}</span>
-        </div>
-      </Fragment> : null;
-  }
-
   return (
     <article className={`${articleClassName} place-card`}
       onMouseEnter={() => {
-        onCardMouseOver(offer);
+        onCardMouseOver(offer.id);
       }}
       onMouseLeave={() => {
-        onCardMouseOver(null);
+        onCardMouseOver(-1);
       }}
     >
-      {_renderMark()}
+      {mark ?
+        <div className="place-card__mark">
+          <span>{mark}</span>
+        </div>
+        :
+        null}
       <div className={`${mainClassName}__image-wrapper place-card__image-wrapper`}>
         <a href="#">
           <img className="place-card__image" src={img} width="260" height="200" alt="Place image" />
@@ -77,8 +73,8 @@ OfferCard.propTypes = {
     coordinates: PropTypes.arrayOf(PropTypes.number),
   }).isRequired,
   mainClassName: PropTypes.string.isRequired,
-  onPlaceCardTitleClick: PropTypes.func.isRequired,
   onCardMouseOver: PropTypes.func.isRequired,
+  onPlaceCardTitleClick: PropTypes.func.isRequired,
 };
 
 export default OfferCard;
