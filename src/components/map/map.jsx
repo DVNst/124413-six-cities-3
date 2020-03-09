@@ -10,6 +10,19 @@ class Map extends PureComponent {
     this._mapRef = React.createRef();
   }
 
+  addMarkers(offers) {
+    offers.forEach((offer) => {
+      this.markers.push(leaflet.marker(offer.coordinates, {icon: this.icon}).addTo(this.map));
+    });
+  }
+
+  delMarkers() {
+    this.markers.forEach((marker) => {
+      marker.remove();
+    });
+    this.markers = [];
+  }
+
   componentDidMount() {
     const {offers, cityName} = this.props;
     const city = cities.coordinates[cities.title.indexOf(cityName)];
@@ -23,6 +36,8 @@ class Map extends PureComponent {
       iconUrl: `img/pin-active.svg`,
       iconSize: [27, 39]
     });
+
+    // setIcon(<Icon> icon)
 
     this.zoom = 12;
     this.map = leaflet.map(this._mapRef.current, {
@@ -39,15 +54,8 @@ class Map extends PureComponent {
       })
       .addTo(this.map);
 
-    // this.layer = leaflet
-    //   .layerGroup()
-    //   .addTo(this.map);
-
-    offers.map((offer) => {
-      return leaflet
-        .marker(offer.coordinates, {icon: this.icon})
-        .addTo(this.map);
-    });
+    this.markers = [];
+    this.addMarkers(offers);
   }
 
   componentWillUnmount() {
@@ -66,19 +74,9 @@ class Map extends PureComponent {
       const city = cities.coordinates[cities.title.indexOf(cityName)];
       const icon = this.icon;
 
-      // this.layer.clearLayers();
-      this.cStorage = {map: this.map, layerGroup: leaflet.layerGroup().addTo(this.map)};
-      prevProps.offers.forEach((offer) => {
-        this.map.removeLayer(offer.coordinates);
-      });
-
+      this.delMarkers();
+      this.addMarkers(offers);
       this.map.setView(city, this.zoom);
-
-      offers.map((offer) => {
-        leaflet
-          .marker(offer.coordinates, {icon})
-          .addTo(this.map);
-      });
     }
   }
 }

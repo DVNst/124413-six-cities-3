@@ -71,8 +71,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.changeOfferScreen(offer));
   },
   onCityNameClick(city) {
-    dispatch(ActionCreator.changeCity(city));
     dispatch(ActionCreator.getOffers(city));
+    dispatch(ActionCreator.changeCity(city));
   },
 });
 
