@@ -13,14 +13,22 @@ class Main extends PureComponent {
 
     this.state = {
       filteredOffers: this.props.offers,
+      offerOver: -1,
     };
 
     this._handlerSelectSortOption = this._handlerSelectSortOption.bind(this);
+    this._handlerCardMouseOver = this._handlerCardMouseOver.bind(this);
   }
 
   _handlerSelectSortOption(newSortOffers) {
     this.setState({
       filteredOffers: newSortOffers,
+    });
+  }
+
+  _handlerCardMouseOver(offerID) {
+    this.setState({
+      offerOver: offerID,
     });
   }
 
@@ -54,6 +62,7 @@ class Main extends PureComponent {
                       {<OffersList
                         offers={filteredOffers}
                         onPlaceCardTitleClick={onPlaceCardTitleClick}
+                        onCardMouseOver={this._handlerCardMouseOver}
                       />}
                     </div>
                   </section>
@@ -69,8 +78,9 @@ class Main extends PureComponent {
                   {(!empty) ?
                     <section className="cities__map map">
                       {<Map
-                        offers={offers}
                         cityName={city}
+                        offers={offers}
+                        offerActive={this.state.offerOver}
                       />}
                     </section>
                     :

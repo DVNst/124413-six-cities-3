@@ -12,19 +12,22 @@ class Map extends PureComponent {
 
   addMarkers(offers) {
     offers.forEach((offer) => {
-      this.markers.push(leaflet.marker(offer.coordinates, {icon: this.icon}).addTo(this.map));
+      this.points.push({
+        id: offer.id,
+        marker: leaflet.marker(offer.coordinates, {icon: this.icon}).addTo(this.map),
+      });
     });
   }
 
   delMarkers() {
-    this.markers.forEach((marker) => {
-      marker.remove();
+    this.points.forEach((point) => {
+      point.marker.remove();
     });
-    this.markers = [];
+    this.points = [];
   }
 
   componentDidMount() {
-    const {offers, cityName} = this.props;
+    const {cityName, offers} = this.props;
     const city = cities.coordinates[cities.title.indexOf(cityName)];
 
     this.icon = leaflet.icon({
@@ -54,7 +57,8 @@ class Map extends PureComponent {
       })
       .addTo(this.map);
 
-    this.markers = [];
+    this.points = [];
+    this.activePoint = false;
     this.addMarkers(offers);
   }
 
@@ -70,20 +74,34 @@ class Map extends PureComponent {
 
   componentDidUpdate(prevProps) {
     if (prevProps.cityName !== this.props.cityName) {
-      const {offers, cityName} = this.props;
+      const {cityName, offers} = this.props;
       const city = cities.coordinates[cities.title.indexOf(cityName)];
-      const icon = this.icon;
 
       this.delMarkers();
       this.addMarkers(offers);
       this.map.setView(city, this.zoom);
     }
+
+    if (prevProps.offerActive !== this.props.offerActive) {
+      const {offerActive} = this.props;
+      const _activePoint = this.points.find((point) => (point.id === offerActive));
+
+      if (this.activePoint) {
+        this.activePoint.marker.setIcon(this.icon);
+      }
+
+      if (_activePoint) {
+        _activePoint.marker.setIcon(this.iconActive);
+        this.activePoint = _activePoint;
+      }
+    }
   }
 }
 
 Map.propTypes = {
-  offers: PropTypes.array.isRequired,
   cityName: PropTypes.string.isRequired,
+  offers: PropTypes.array.isRequired,
+  offerActive: PropTypes.number,
 };
 
 export default Map;
